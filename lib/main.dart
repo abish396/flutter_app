@@ -9,81 +9,56 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Colors.brown,
-          body:SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 50.0,
-                  backgroundImage: AssetImage('images/sofos.png'),
-                  backgroundColor:Colors.white,
-                ),
-                Text(
-                  'Abish',
-                  style:TextStyle(
-                    color:Colors.white,
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Pacifico'
-                  )
-                ),
-                Text(
-                  'FULL STACK DEVELOPER',
-                  style:TextStyle(
-                      color:Colors.white70,
-                      fontSize: 20.0,
-                      letterSpacing: 2.5,
-                      fontWeight: FontWeight.bold
-                  )
-                ),
-                SizedBox(
-                  height: 20.0,
-                  width: 150.0,
-                  child: Divider(
-                    color: Colors.blue.shade100,
-                  ),
-                ),
-                Card(
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                  child: ListTile(
-                    leading: Icon(
-                        Icons.phone,
-                        color:Colors.blue.shade500
-                    ),
-                    title: Text(
-                        '9818403886',
-                        style: TextStyle(
-                          color: Colors.blue.shade500,
-                          fontFamily: 'Source Sans Pro',
-                          fontSize: 20.0,
-                        )
-                    ),
-                  )
-
-                ),
-                Card(
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                    child: ListTile(
-                      leading: Icon(
-                          Icons.email,
-                          color:Colors.blue.shade500
-                      ),
-                      title: Text(
-                          'abish@gmail.com',
-                          style: TextStyle(
-                            color: Colors.blue.shade500,
-                            fontFamily: 'Source Sans Pro',
-                            fontSize: 20.0,
-                          )
-                      ),
-                    )
-                ),
-              ],
-            ),
+          backgroundColor: Colors.blue,
+          appBar: AppBar(
+            title: Text('Dicee'),
+            backgroundColor: Colors.red,
           ),
+          body:DicePage()
       ),
     );
   }
 }
+
+
+class DicePage extends StatefulWidget {
+@override
+_DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: FlatButton(
+              onPressed: () {
+                setState(() {
+                  leftDiceNumber = 5;
+                });
+              },
+              child: Image.asset('images/dice$leftDiceNumber.png'),
+            ),
+          ),
+          Expanded(
+            child: FlatButton(
+                onPressed:  (){
+                  print('Right button pressed');
+                },
+                child: Image.asset('images/dice1.png')
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
 
